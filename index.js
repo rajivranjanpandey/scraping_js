@@ -34,7 +34,7 @@ series_arr.forEach((name) => {
         let trimmed_title = element.title.trim()
         let size = parseInt(trimmed_title.slice(trimmed_title.indexOf("[eztv]") + 8, trimmed_title.indexOf("Magnet") - 4))
         console.log("SIZE", size)
-        if (size >= 500 && size <= 800) {
+        if (size >= 500 && size <= 900) {
           console.log("Title", element.title)
           result_found = true
           searchParams.shift(name)
