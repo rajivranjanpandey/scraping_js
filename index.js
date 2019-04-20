@@ -5,7 +5,7 @@ var searchParams = ["eztv", "Magnet Link", "720p"]
 var finalLinks = []
 var x = Xray()
 // Series Arr just give the correct name and you are goood to go.
-var series_arr = ['Flash', "Arrow", "Supergirl"]
+var series_arr = ['Flash', "Arrow", "Supergirl","Legends of Tomorrow"]
 // var series_arr = []
 var previous_title_arr = []
 fs.readFile('titles.txt', 'utf-8', (error, data) => {
@@ -14,12 +14,14 @@ fs.readFile('titles.txt', 'utf-8', (error, data) => {
 })
 fs.writeFile('results.txt', '', (err) => console.log("REsult File", err))
 series_arr.forEach((name) => {
-  x(`https://eztv.io/search/${name}`, '.forum_header_border', [{
+  let urlName = name.replace(/ /g,'%20');
+  x(`https://eztv.io/search/${urlName}`, '.forum_header_border', [{
     tds: x('.forum_thread_post', [{
       title: 'a@title',
       links: 'a@href'
     }])
   }])(function (err, obj) {
+    if(obj){
     obj.splice(0, 2)
     let tds_list = obj[0]['tds']
     tds_list.splice(25, tds_list.length)
@@ -74,6 +76,7 @@ series_arr.forEach((name) => {
         }
       }
     })
+    }
   })
 })
 
