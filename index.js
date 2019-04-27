@@ -43,14 +43,15 @@ series_arr.forEach((name) => {
       })
       if (result_arr.length === searchParams.length && !result_found) {
         if (previous_title) {
-          let previous_title_iNTERNAL_index = previous_title.indexOf("iNTERNAL")
-          let previous_title_episode = previous_title.slice(previous_title_iNTERNAL_index - 7, previous_title_iNTERNAL_index).trim()
-          let current_title_iNTERNAL_index = element.title.indexOf("iNTERNAL")
-          let current_title_episode = element.title.slice(current_title_iNTERNAL_index - 7, current_title_iNTERNAL_index).trim()
+          let previous_title_iNTERNAL_index = previous_title.indexOf("720p")
+          let previous_title_episode = previous_title.slice(previous_title_iNTERNAL_index - 8, previous_title_iNTERNAL_index).trim()
+          let current_title_iNTERNAL_index = element.title.indexOf("720p")
+          let current_title_episode = element.title.slice(current_title_iNTERNAL_index - 8, current_title_iNTERNAL_index).trim()
           if (previous_title_episode === current_title_episode) {
             title_exists = true
             result_found = true
           }
+          console.log(element.title,previous_title_index,previous_title_episode,current_title_iNTERNAL_index,current_title_episode)
         }
         if (!title_exists) {
           let trimmed_title = element.title.trim()
